@@ -1,0 +1,71 @@
+body{
+    text-align: center;
+    background-color: #146C94;
+    color: aliceblue;
+    margin: 0;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+
+.main{
+    margin-left: 5%;
+}
+
+#npv-1, #npv-2, #npv-3, #npv-4, #npv-5{
+    width: 30px;
+    text-align: center;
+}
+
+.harga{
+    width: 80px;
+    text-align: right;
+}
+
+nav{
+    display: flex;
+    height: 50px;
+    background-color: #19A7CE;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 30px;
+}
+
+.nav-right{
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    color: white;
+}
+
+.nav-right li:hover{
+    cursor: pointer;
+}
+
+.nav-right :link{
+    cursor: pointer;
+}
+
+#card-1, #card-2, #card-3, #card-4, #card-5, #card-6{
+    background: #19A7CE;
+    width: 45%;
+    height: auto;
+    border-radius: 3rem;
+}
+
+.tabel{
+    padding-left: 6rem;
+    justify-content: center;
+}
+
+.input{
+    padding-left: 6.5rem;
+}
+
+h4{
+    margin: 5px 0;
+}

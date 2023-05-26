@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="kelompok.css">
+    <link rel="shortcut icon" href="icon.jpg" type="image/x-icon">
+    <title>Kelompok Topik Khusus SIM</title>
+
+    <script>
+        const arr = [["hrg","dp","cicil"],
+                    ["npv-1","npv-2","npv-3","npv-4","npv-5"],
+                    ["n-1","n-2","n-3","n-4","n-5","n-6","n-7","n-8","n-9","n-10","n-11","n-t"],
+                    ["np-1","np-2","np-3","np-4","np-5"]];
+                    
+        let np1;
+
+        function hitung(str){
+            let hi = 0;
+            for(let b = 0 ; b <= 10 ; b++){
+                    document.getElementById(arr[2][b]).innerHTML = parseFloat(parseInt(document.getElementById(arr[0][2]).value)/Math.exp((b+1)*Math.log(1+parseFloat(document.getElementById(str).innerHTML)))).toFixed(0);
+                    hi = hi + parseFloat(parseInt(document.getElementById(arr[0][2]).value)/Math.exp((b+1)*Math.log(1+parseFloat(document.getElementById(str).innerHTML)))).toFixed(0);
+            }
+            document.getElementById(arr[2][11]).innerHTML = hi ;
+        }
+
+        function hasil(){
+            for(let a = 0 ; a <= 4 ; a++){
+                np1 = 0;
+                let koma = (parseFloat(document.getElementById(arr[1][a]).value/100)/12).toFixed(8);
+                console.log("ini koma : " + koma);
+                for(let b = 0 ; b <= 10 ; b++){
+                    let s = b;
+                    let h = parseInt(document.getElementById(arr[0][2]).value)/Math.exp(s++)*Math.log(1+koma);
+                    console.log("ini h " + b+1 +  " : " + h);
+
+                    np1 = np1 + h;
+                }
+                console.log("ini np1 : " + np1);
+                document.getElementById(arr[3][a]).innerHTML = np1 - (parseInt(document.getElementById("hrg").value) - parseInt(document.getElementById("dp").value));
+            }
+        }
+
+        function handleClick(value) {
+            if(value === 0){
+
+            }else if(value === 1){
+                document.getElementById('title').innerHTML = "Lembar Perhitungan 1";
+                
+                var inputText = document.getElementById('npv-1').value;
+                document.getElementById('outputNpv-1').innerHTML = inputText;
+                
+                var koma = ((document.getElementById('npv-1').value/100)/12).toFixed(8);
+                document.getElementById('outNpv-1').innerHTML = koma;
+            }else if(value === 2){
+                document.getElementById('title').innerHTML = "Lembar Perhitungan 2";
+                
+                var inputText = document.getElementById('npv-2').value;
+                document.getElementById('outputNpv-1').innerHTML = inputText;
+                
+                var koma = ((document.getElementById('npv-2').value/100)/12).toFixed(8);
+                document.getElementById('outNpv-1').innerHTML = koma;
+            }else if(value === 3){
+                document.getElementById('title').innerHTML = "Lembar Perhitungan 3";
+                
+                var inputText = document.getElementById('npv-3').value;
+                document.getElementById('outputNpv-1').innerHTML = inputText;
+                
+                var koma = ((document.getElementById('npv-3').value/100)/12).toFixed(8);
+                document.getElementById('outNpv-1').innerHTML = koma;
+            }else if(value === 4){
+                document.getElementById('title').innerHTML = "Lembar Perhitungan 4";
+                
+                var inputText = document.getElementById('npv-4').value;
+                document.getElementById('outputNpv-1').innerHTML = inputText;
+                
+                var koma = ((document.getElementById('npv-4').value/100)/12).toFixed(8);
+                document.getElementById('outNpv-1').innerHTML = koma;
+            }else if(value === 5){
+                document.getElementById('title').innerHTML = "Lembar Perhitungan 5";
+                
+                var inputText = document.getElementById('npv-5').value;
+                document.getElementById('outputNpv-1').innerHTML = inputText;
+                
+                var koma = ((document.getElementById('npv-5').value/100)/12).toFixed(8);
+                document.getElementById('outNpv-1').innerHTML = koma;
+            }else if(value === 6){
+                document.getElementById('title').innerHTML = "Lembar Perhitungan IRR";
+            }
+            
+            hitung("outNpv-1");
+            hasil();
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h3>Topik Khusus Sim</h3>
+        </div>
+        <div class="nav-right">
+            <li onclick="handleClick(0)">Grafik</li>
+            <li onclick="handleClick(1)">Lembar 1</li>
+            <li onclick="handleClick(2)">Lembar 2</li>
+            <li onclick="handleClick(3)">Lembar 3</li>
+            <li onclick="handleClick(4)">Lembar 4</li>
+            <li onclick="handleClick(5)">Lembar 5</li>
+            <li onclick="handleClick(6)">Lembar IRR</li>
+        </div>
+    </nav>
+    <br>
+    <div class="wrapper">
+        <div class="main">
+            <form action="">
+                <table border="3px" cellpadding="9" width="313px">
+                    <tr>
+                        <th>Uraian</th>
+                        <th>Nominal</th>
+                    </tr>
+                    <tr>
+                        <td>Harga Mobil</td>
+                        <td>Rp. <input type="text" id="hrg" class="harga"></td>
+                    </tr>
+                    <tr>
+                        <td>DP Mobil</td>
+                        <td>Rp. <input type="text" id="dp" class="harga"></td>
+                    </tr>
+                    <tr>
+                        <td>Cicilan Mobil</td>
+                        <td>Rp. <input type="text" id="cicil" class="harga"></td>
+                    </tr>
+                </table>
+            </form>
+            <br>
+            <form action="">
+                <table border="3px" cellpadding="9">
+                    <tr>
+                        <th colspan="2">Interest</th>
+                        <th>NPV = ∑PV - investasi</th>
+                    </tr>
+                    <tr>
+                        <td>NPV</td>
+                        <td><input type="text" id="npv-1"> %</td>
+                        <td><label id="np-1"></label></td>
+                    </tr>
+                    <tr>
+                        <td>NPV</td>
+                        <td><input type="text" id="npv-2"> %</td>
+                        <td><label id="np-2"></label></td>
+                    </tr>
+                    <tr>
+                        <td>NPV</td>
+                        <td><input type="text" id="npv-3"> %</td>
+                        <td><label id="np-3"></label></td>
+                    </tr>
+                    <tr>
+                        <td>NPV</td>
+                        <td><input type="text" id="npv-4"> %</td>
+                        <td><label id="np-4"></label></td>
+                    </tr>
+                    <tr>
+                        <td>NPV</td>
+                        <td><input type="text" id="npv-5"> %</td>
+                        <td><label id="np-5"></label></td>
+                    </tr>
+                </table>
+            </form>
+            <br>
+            <table border="2" cellpadding="9">
+                <tr>
+                    <td>IRR.</td>
+                    <td><label for="">akuaa %</label></td>
+                    <td><label for="">___________________.</label></td>
+                </tr>
+            </table>
+            <br>
+        </div>
+
+        <div id="card-1" style="display: block;">
+            <h4 id="title">Lembar Perhitungan 1</h4>
+            <div class="input">
+                <table cellpadding="9px" width="330">
+                    <tr>
+                        <td>Interst</td>
+                        <td><label for="" id="outputNpv-1"></label> %</td>
+                        <td><label for="" id="outNpv-1"></label></td>
+                    </tr>
+                    <tr>
+                        <td>∑PV</td>
+                        <td></td>
+                        <td><label for="" id="n-t"></label></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tabel">
+                <form action="">
+                    <table border="3px" cellpadding="5" width="350px">
+                        <tr>
+                            <th>Bulan</th>
+                            <th>PV</th>
+                            <th>Nilai PV</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>PV1</td>
+                            <td><label for="" id="n-1"></label></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>PV2</td>
+                            <td><label for="" id="n-2"></label></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>PV3</td>
+                            <td><label for="" id="n-3"></label></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>PV4</td>
+                            <td><label for="" id="n-4"></label></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>PV5</td>
+                            <td><label for="" id="n-5"></label></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>PV6</td>
+                            <td><label for="" id="n-6"></label></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>PV7</td>
+                            <td><label for="" id="n-7"></label></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>PV8</td>
+                            <td><label for="" id="n-8"></label></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>PV9</td>
+                            <td><label for="" id="n-9"></label></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>PV10</td>
+                            <td><label for="" id="n-10"></label></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>PV11</td>
+                            <td><label for="" id="n-11"></label></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
